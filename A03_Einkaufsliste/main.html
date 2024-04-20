@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Einkaufsliste</h1 id="head">
+
+    <div class="liste">
+        <label for="product">Ware</label>
+        <input type="text" name="Ware" id="product" value="Cola">
+        <br>
+        <label for="amount">Menge</label>
+        <input type="number" name="Menge" id="amount" value="20" min="0" step="5" >
+        <br>
+        <label for="comment">Kommentar</label>
+        <input type="text" name="Kommentar" id="comments" placeholder="Cola 20 Stück">
+        <br>
+        <label for="time">Zuletzt gekauft</label>
+        <input type="date" id="time">
+        <br>
+        <input type="button" value="Hinzufügen" id="add">
+        <input type="button" value="Löschen" id="delete">
+    </div>
+    <div class="kaufliste">
+        <label for="buy">
+            <h2>Kaufliste</h2>
+        </label>
+        <input type="text" name="Kaufen" id="buy" placeholder="Cola 20 Stück">
+        <input type="date" name="Datum" id="date">
+        <label for="done">Erledigt</label>
+        <input type="checkbox" name="Erledigt" id="done">
+        <input type="button" value="ersetzen" id="change">
+
+    </div>
+
+</body>
+
+</html>
