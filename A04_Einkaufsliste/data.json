@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Cola",
+        "menge": "20",
+        "letzterKauf": "2024-04-20",
+        "kommentar": "good",
+        "gekauft": "true"
+    },
+    {
+        "name": "Bread",
+        "menge": "2",
+        "letzterKauf": "2024-04-19",
+        "kommentar": "not good",
+        "gekauft": "false"
+
+},
+{
+    "name": "Tomato",
+    "menge": "5",
+    "letzterKauf": "2024-04-18",
+    "kommentar": "bla bla",
+    "gekauft": "true"
+
+},
+{
+    "name": "garlik",
+    "menge": "100",
+    "letzterKauf": "2024-04-28",
+    "kommentar": "green, long, bla",
+    "gekauft": "false"
+
+}
+]

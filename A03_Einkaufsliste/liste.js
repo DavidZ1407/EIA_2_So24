@@ -1,4 +1,6 @@
-namespace EventInspector {
+"use strict";
+var EventInspector;
+(function (EventInspector) {
     //     /*
     //     Aufgabe: <L02_EventInspector>
     //     // Name: <David Zahn>
@@ -6,12 +8,10 @@ namespace EventInspector {
     //     // Datum: <23.04.2024>
     //     // Quellen: <"">
     //     */
-
     //Window wird erst geladen, dann hndload ausgeführt, eine variable span erstellen
     window.addEventListener("load", handleLoad);
-
     //Konsole ausgabe
-    function handleLoad(_event: Event): void {
-       
+    function handleLoad(_event) {
     }
-}
+})(EventInspector || (EventInspector = {}));
+//# sourceMappingURL=liste.js.map

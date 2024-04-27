@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="list.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="data.json"></script>
+    <title>WG-Einkaufsliste</title>
+</head>
+
+<body>
+    <h1>Einkaufsliste</h1 id="head">
+
+    <div class="liste">
+        <label for="product">Ware</label>
+        <input type="text" name="Ware" id="product" value="">
+        <br>
+        <label for="amount">Menge</label>
+        <input type="number" name="Menge" id="amount" value="" min="0" step="1">
+        <br>
+        <label for="comment">Kommentar</label>
+        <input type="text" name="Kommentar" id="comments">
+        <br>
+        <label for="time">Datum</label>
+        <input type="date" id="time">
+        <br>
+        <input type="button" value="Hinzufügen" id="add">
+
+
+    </div>
+    <div id="Tabelle">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Menge</th>
+                <th>Letzter Kauf</th>
+                <th>Kommentar</th>
+                <th>Im Einkaufswagen</th>
+                <th>Löschen</th>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+
+</html>

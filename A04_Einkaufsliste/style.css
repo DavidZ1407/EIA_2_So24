@@ -30,8 +30,7 @@ h1 {
 #product,
 #amount,
 #comments,
-#time
-{
+#time {
     text-align: center;
     display: block;
     border: 1px solid black;
@@ -43,19 +42,23 @@ h1 {
 #change {
     border: 1px solid black;
     border-radius: 5px
-
 }
 
 
 
 
-.kaufliste input,
-.kaufliste p,
-.kaufliste button {
-    margin: 1px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 2px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #e64c10;
+
+}
+
+th,
+td {
+    border: none;
+    padding: 8px;
+    text-align: center;
 
 }
 
