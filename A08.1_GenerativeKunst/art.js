@@ -44,7 +44,7 @@ var GenerativeArt;
         for (let i = 0; i < 360; i += 2) { //Die Schleife zählt von 0 bis 360 Grad in 2 Grad Schritte und berechnet für jeden Winkel die x- und y-Koordinaten 
             crc2.save(); // Speichern des aktuellen Zustands
             crc2.translate(centerX, centerY); // Verschiebe zum Ursprung
-            crc2.rotate((i * Math.PI) / 180); // Rotiere den Winkel
+            crc2.rotate((i * Math.PI) / 180); // Rotation vom Winkel
             crc2.translate(-centerX, -centerY); // Verschiebe den Ursprung zurück
             // Linienfarbe, Zufällge Farbe
             crc2.strokeStyle = getRandomColor();
@@ -62,7 +62,7 @@ var GenerativeArt;
         for (let i = 0; i < 360; i += 2) {
             crc2.save(); // Speichern des aktuellen Zustands
             crc2.translate(centerX, centerY); // Verschiebe zum Ursprung
-            crc2.rotate((i * Math.PI) / 180); // Rotiere den Winkel
+            crc2.rotate((i * Math.PI) / 180); // Rotation vom Winkel
             crc2.translate(-centerX, -centerY); // Verschiebe den Ursprung zurück
             // Linienfarbe, Zufällge Farbe
             crc2.strokeStyle = getRandomColor();

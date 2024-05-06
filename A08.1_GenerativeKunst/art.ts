@@ -11,7 +11,6 @@ namespace GenerativeArt {
     // Warten bis das Fenster geladen ist,variable deklaration
     window.addEventListener("load", handleLoad);
     let crc2: CanvasRenderingContext2D;
-    
 
     //Suchen nach Canvas in DOM, wenn canvas nicht gefunden return
     function handleLoad(_event: Event) {
@@ -51,7 +50,7 @@ namespace GenerativeArt {
         for (let i = 0; i < 360; i += 2) { //Die Schleife zählt von 0 bis 360 Grad in 2 Grad Schritte und berechnet für jeden Winkel die x- und y-Koordinaten 
             crc2.save(); // Speichern des aktuellen Zustands
             crc2.translate(centerX, centerY); // Verschiebe zum Ursprung
-            crc2.rotate((i * Math.PI) / 180); // Rotiere den Winkel
+            crc2.rotate((i * Math.PI) / 180); // Rotation vom Winkel
             crc2.translate(-centerX, -centerY); // Verschiebe den Ursprung zurück
 
             // Linienfarbe, Zufällge Farbe
@@ -76,7 +75,7 @@ namespace GenerativeArt {
         for (let i = 0; i < 360; i += 2) {
             crc2.save(); // Speichern des aktuellen Zustands
             crc2.translate(centerX, centerY); // Verschiebe zum Ursprung
-            crc2.rotate((i * Math.PI) / 180); // Rotiere den Winkel
+            crc2.rotate((i * Math.PI) / 180); // Rotation vom Winkel
             crc2.translate(-centerX, -centerY); // Verschiebe den Ursprung zurück
 
             // Linienfarbe, Zufällge Farbe
@@ -92,12 +91,12 @@ namespace GenerativeArt {
                 crc2.stroke(); // Zeichne den Pfad
 
             } else {
-            //Zeichnen einer Linie
-            crc2.beginPath();
-            crc2.moveTo(centerX - radius, centerY);
-            crc2.lineTo(centerX + radius, centerY); 
-            crc2.stroke();
-                
+                //Zeichnen einer Linie
+                crc2.beginPath();
+                crc2.moveTo(centerX - radius, centerY);
+                crc2.lineTo(centerX + radius, centerY);
+                crc2.stroke();
+
             }
 
             crc2.restore(); // Wiederherstellen des ursprünglichen Zustands
