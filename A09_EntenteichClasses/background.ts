@@ -1,5 +1,5 @@
 namespace A09_Ententeich{
-
+    // Hintergrund zeichnen
     export function drawBackground(): void {
         console.log("Background");
         let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
@@ -10,6 +10,8 @@ namespace A09_Ententeich{
         crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
     }
+
+    // Zeichnen von Bergen 
     export function drawMountains(horizon: number, position: Vector, size: Vector, colorLow: string, colorHigh: string): void {
         console.log("Mountains");
         let stepMin: number = 50;
@@ -17,7 +19,7 @@ namespace A09_Ententeich{
         let x: number = 0;
     
         crc2.save();
-        crc2.translate(position.x, horizon); // Adjusted to horizon
+        crc2.translate(position.x, horizon); 
     
         crc2.beginPath();
         crc2.moveTo(0, 0);
@@ -42,7 +44,7 @@ namespace A09_Ententeich{
     
         crc2.restore();
     }
-
+    // Zeichnung für die Sonne 
     export function drawSun(_position: Vector): void {
         console.log('Sun', _position);
 
@@ -60,7 +62,7 @@ namespace A09_Ententeich{
         crc2.fill();
         crc2.restore();
     }
-
+    // Zeichen Wolken
     export function drawCloud(_position: Vector, _size: Vector): void {
         console.log("Cloud", _position, _size);
 
@@ -88,6 +90,7 @@ namespace A09_Ententeich{
         }
         crc2.restore();
     }
+    // Zeichnen Teich
     export function drawPond(_center: Vector, _width: number, _height: number): void {
         console.log("Pond", _center, _width, _height);
         
