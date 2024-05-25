@@ -28,8 +28,6 @@ var A09_Ententeich;
                 case "rose":
                     _flower.drawRose();
                     break;
-                default:
-                    _flower.drawGenericFlower();
             }
             A09_Ententeich.crc2.closePath();
             A09_Ententeich.crc2.fill();
@@ -49,10 +47,6 @@ var A09_Ententeich;
             A09_Ententeich.crc2.arc(this.x + 5, this.y, 5, 0, Math.PI * 2);
             A09_Ententeich.crc2.arc(this.x, this.y - 5, 5, 0, Math.PI * 2);
             A09_Ententeich.crc2.arc(this.x, this.y + 5, 5, 0, Math.PI * 2);
-        }
-        // Generische Blume zeichnen
-        drawGenericFlower() {
-            A09_Ententeich.crc2.arc(this.x, this.y, 5, 0, Math.PI * 2);
         }
     }
     A09_Ententeich.flower = flower;

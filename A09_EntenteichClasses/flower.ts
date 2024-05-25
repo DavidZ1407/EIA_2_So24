@@ -29,8 +29,6 @@ namespace A09_Ententeich {
                 case "rose":
                     _flower.drawRose();
                     break;
-                default:
-                    _flower.drawGenericFlower();
             }
 
             crc2.closePath();
@@ -55,10 +53,7 @@ namespace A09_Ententeich {
             crc2.arc(this.x, this.y + 5, 5, 0, Math.PI * 2);
         }
 
-        // Generische Blume zeichnen
-        drawGenericFlower(): void {
-            crc2.arc(this.x, this.y, 5, 0, Math.PI * 2);
-        }
+       
     }
 }
 

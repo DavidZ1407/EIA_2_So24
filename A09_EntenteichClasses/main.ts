@@ -1,6 +1,5 @@
 namespace A09_Ententeich {
-
-   //     /*
+    //     /*
     //     Aufgabe: <L09_Ententeich>
     //     // Name: <David Zahn>
     //     // Matrikel: <275010>
@@ -12,7 +11,8 @@ namespace A09_Ententeich {
     window.addEventListener('load', handleload);
     let clouds: Cloud[] = [];
     let insectArray: insect[] = [];
-    
+    let ducks: Duck[] = [];
+    // let flowers: Flower[]=[];
     export let crc2: CanvasRenderingContext2D;
     export let golden: number = 0.62;
     export let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
@@ -28,23 +28,46 @@ namespace A09_Ententeich {
         createClouds(); // Mehr Wolken erstellen
         drawBackground();  // Hintergrund zeichnen
         setInterval(animateClouds, 40);  // alle 40 Millisekunden neue Wolken zeichnen 
-        
         createInsects();
         window.setInterval(animateInsect, 3);
-        
+        createDucks();
     }
+
+    function createDucks(): void {
+        for (let i = 0; i < 3; i++) {
+            let x = Math.random() * canvas.width;
+            let y =500 ; 
+            let duck = new Duck(x, y, "#8B4513", true);
+            ducks.push(duck);
+        }
+        setInterval(animateDucks, 20); // Enten alle 20 Millisekunden animieren
+    }
+
+    function animateDucks(): void {
+        // crc2.clearRect(0, 0, canvas.width, canvas.height); // Canvas löschen
+        // drawBackground(); // Hintergrund nur einmal zeichnen
+
+        for (let duck of ducks) {
+            duck.move(); // Enten bewegen
+            duck.draw(); // Enten zeichnen
+        }
+        drawFlowers(); // Blumen zeichnen
+    }
+
+
+
     // Drei Wolken zeichnen
     function createClouds(): void {
-        for (let i = 0; i < 3; i++) { 
+        for (let i = 0; i < 3; i++) {
             let x = Math.random() * canvas.width;
-            let y = Math.random() * (100); 
+            let y = Math.random() * (100);
             let cloud = new Cloud(x, y);
             clouds.push(cloud);
         }
     }
-        //Bewegung von Wolken zeichnen
-     function animateClouds(): void {
-        crc2.clearRect(0, 0, canvas.width, canvas.height); // Canvas löschen
+    //Bewegung von Wolken zeichnen
+    function animateClouds(): void {
+        // crc2.clearRect(0, 0, canvas.width, canvas.height); // Canvas löschen
         drawBackground(); // Hintergrund nur einmal zeichnen
 
         for (let cloud of clouds) {
@@ -53,6 +76,7 @@ namespace A09_Ententeich {
         }
         drawFlowers(); // Blumen zeichnen
     }
+    //Zeichnen der Blumen position, Farbe
     function drawFlowers(): void {
         // Erstelle Blumen und rufe die drawFlower-Methode auf, um sie zu zeichnen
         let tulip = new flower(600, 500, "red", new Vector(100, 100), "tulip", new Vector(20, 20));
@@ -60,22 +84,23 @@ namespace A09_Ententeich {
 
         let rose = new flower(100, 500, "blue", new Vector(200, 200), "rose", new Vector(30, 30));
         flower.drawFlower(rose);
-        
+
     }
 
-
+    // Insecten erstellen
     function createInsects(): void {
         for (let i: number = 0; i < 3; i++) {
             let insects: insect = new insect(0.5, new Vector(600, 400));
             insectArray.push(insects);
         }
     }
-
-function animateInsect(): void {
-    for (let insect of insectArray) {
-        insect.move(1 / 50);
-        insect.draw();
+    //Insecten bewegung
+    function animateInsect(): void {
+        for (let insect of insectArray) {
+            insect.move(1 / 50);
+            insect.draw();
+        }
     }
 }
 
-}
+

@@ -11,6 +11,7 @@ var A09_Ententeich;
     window.addEventListener('load', handleload);
     let clouds = [];
     let insectArray = [];
+    let ducks = [];
     A09_Ententeich.golden = 0.62;
     A09_Ententeich.canvas = document.querySelector("canvas");
     function handleload(_event) {
@@ -24,6 +25,25 @@ var A09_Ententeich;
         setInterval(animateClouds, 40); // alle 40 Millisekunden neue Wolken zeichnen 
         createInsects();
         window.setInterval(animateInsect, 3);
+        createDucks();
+    }
+    function createDucks() {
+        for (let i = 0; i < 3; i++) {
+            let x = Math.random() * A09_Ententeich.canvas.width;
+            let y = 500;
+            let duck = new A09_Ententeich.Duck(x, y, "#8B4513", true);
+            ducks.push(duck);
+        }
+        setInterval(animateDucks, 20); // Enten alle 20 Millisekunden animieren
+    }
+    function animateDucks() {
+        // crc2.clearRect(0, 0, canvas.width, canvas.height); // Canvas löschen
+        // drawBackground(); // Hintergrund nur einmal zeichnen
+        for (let duck of ducks) {
+            duck.move(); // Enten bewegen
+            duck.draw(); // Enten zeichnen
+        }
+        drawFlowers(); // Blumen zeichnen
     }
     // Drei Wolken zeichnen
     function createClouds() {
@@ -36,7 +56,7 @@ var A09_Ententeich;
     }
     //Bewegung von Wolken zeichnen
     function animateClouds() {
-        A09_Ententeich.crc2.clearRect(0, 0, A09_Ententeich.canvas.width, A09_Ententeich.canvas.height); // Canvas löschen
+        // crc2.clearRect(0, 0, canvas.width, canvas.height); // Canvas löschen
         A09_Ententeich.drawBackground(); // Hintergrund nur einmal zeichnen
         for (let cloud of clouds) {
             cloud.move(); // Wolken bewegen
@@ -44,6 +64,7 @@ var A09_Ententeich;
         }
         drawFlowers(); // Blumen zeichnen
     }
+    //Zeichnen der Blumen position, Farbe
     function drawFlowers() {
         // Erstelle Blumen und rufe die drawFlower-Methode auf, um sie zu zeichnen
         let tulip = new A09_Ententeich.flower(600, 500, "red", new A09_Ententeich.Vector(100, 100), "tulip", new A09_Ententeich.Vector(20, 20));
@@ -51,12 +72,14 @@ var A09_Ententeich;
         let rose = new A09_Ententeich.flower(100, 500, "blue", new A09_Ententeich.Vector(200, 200), "rose", new A09_Ententeich.Vector(30, 30));
         A09_Ententeich.flower.drawFlower(rose);
     }
+    // Insecten erstellen
     function createInsects() {
         for (let i = 0; i < 3; i++) {
             let insects = new A09_Ententeich.insect(0.5, new A09_Ententeich.Vector(600, 400));
             insectArray.push(insects);
         }
     }
+    //Insecten bewegung
     function animateInsect() {
         for (let insect of insectArray) {
             insect.move(1 / 50);

@@ -20,12 +20,12 @@ namespace A09_Ententeich {
                 this.x = -200; // Die Wolke erscheint wieder auf der linken Seite des Canvas
             }
         }
-
+        //Wolken werden gezeichnet
         draw(): void {
             crc2.beginPath();
             crc2.fillStyle = 'white';
 
-            // Drei sich überlappende Ellipsen für die Wolke zeichnen
+            
             this.drawEllipse(this.x - this.size * 0.6, this.y, this.size * 0.8, this.size * 0.6);
             this.drawEllipse(this.x, this.y, this.size, this.size * 0.7);
             this.drawEllipse(this.x + this.size * 0.6, this.y, this.size * 0.8, this.size * 0.6);
