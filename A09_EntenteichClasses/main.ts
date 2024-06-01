@@ -28,7 +28,7 @@ namespace A09_Ententeich {
         createClouds(); // Mehr Wolken erstellen
         drawBackground();  // Hintergrund zeichnen
         setInterval(animateClouds, 40);  // alle 40 Millisekunden neue Wolken zeichnen 
-        createInsects();
+        createInsects(); // Zeichnen Insects
         window.setInterval(animateInsect, 3);
         createDucks();
     }
