@@ -1,37 +1,32 @@
 "use strict";
 var A09_Ententeich;
 (function (A09_Ententeich) {
-    class Cloud {
-        x;
-        y;
-        size;
-        speed; // Geschwindigkeit der Wolke
-        constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
-            this.size = 100; // Größe der Wolke
-            this.speed = 1; // Geschwindigkeit der Wolke in horizontaler Richtung
+    class Cloud extends A09_Ententeich.Movable {
+        constructor(x, y) {
+            super(new A09_Ententeich.Vector(x, y), new A09_Ententeich.Vector(2, 0), "white", "cloud");
         }
-        move() {
-            // Bewegung der Wolke nach rechts
-            this.x += this.speed;
-            // Wenn die Wolke den rechten Rand des Canvas erreicht, wird sie zurückgesetzt
-            if (this.x > A09_Ententeich.canvas.width) {
-                this.x = -200; // Die Wolke erscheint wieder auf der linken Seite des Canvas
+        move(timeslice) {
+            console.log("Moving cloud...");
+            let offset = new A09_Ententeich.Vector(this.velocity.x, this.velocity.y);
+            offset.scale(timeslice);
+            this.position.add(offset);
+            console.log(`New position: (${this.position.x}, ${this.position.y})`);
+            if (this.position.x > A09_Ententeich.crc2.canvas.width) {
+                this.position.x = 0;
+                console.log("Resetting cloud position...");
             }
         }
-        //Wolken werden gezeichnet
         draw() {
+            console.log(`Drawing cloud at (${this.position.x}, ${this.position.y})`);
+            A09_Ententeich.crc2.save();
+            A09_Ententeich.crc2.translate(this.position.x, this.position.y);
+            A09_Ententeich.crc2.fillStyle = this.color;
             A09_Ententeich.crc2.beginPath();
-            A09_Ententeich.crc2.fillStyle = 'white';
-            this.drawEllipse(this.x - this.size * 0.6, this.y, this.size * 0.8, this.size * 0.6);
-            this.drawEllipse(this.x, this.y, this.size, this.size * 0.7);
-            this.drawEllipse(this.x + this.size * 0.6, this.y, this.size * 0.8, this.size * 0.6);
-            A09_Ententeich.crc2.closePath();
+            A09_Ententeich.crc2.arc(0, 0, 50, 0, Math.PI * 2);
+            A09_Ententeich.crc2.arc(50, 0, 50, 0, Math.PI * 2);
+            A09_Ententeich.crc2.arc(25, -25, 50, 0, Math.PI * 2);
             A09_Ententeich.crc2.fill();
-        }
-        drawEllipse(x, y, radiusX, radiusY) {
-            A09_Ententeich.crc2.ellipse(x, y, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            A09_Ententeich.crc2.restore();
         }
     }
     A09_Ententeich.Cloud = Cloud;

@@ -1,44 +1,33 @@
 namespace A09_Ententeich {
-    export class insect {
-        position: Vector;
-        velocity: Vector;
+    export class Insect extends Movable {
         size: number;
-        color: string;
-        type: string;
-        activity: string;
 
-        constructor(_size: number, _position?: Vector) {
-            if (_position)
-                this.position = _position;
-            else
-                this.position = new Vector(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height);
-
-            this.velocity = new Vector(50, 0);
-            this.velocity.randomize(120, 20);
-
-            // Farbe, Typ und Aktivität der Biene festlegen
-            this.color = "yellow";
-            this.type = "bumblebee";
-            this.activity = "flying";
+        constructor(size: number, position?: Vector) {
+            let canvasWidth = crc2.canvas.width;
+            let canvasHeight = crc2.canvas.height;
+        
+            let defaultPosition = position || new Vector(Math.random() * canvasWidth, Math.random() * canvasHeight);
+            defaultPosition.x = Math.min(canvasWidth, Math.max(0, defaultPosition.x));
+            defaultPosition.y = Math.min(canvasHeight, Math.max(0, defaultPosition.y));
+        
+            let defaultVelocity = new Vector(50, 0);
+            defaultVelocity.randomize(120, 20);
+            super(defaultPosition, defaultVelocity, "yellow", "insect");
+            this.size = size;
         }
 
-        move(_timeslice: number): void {
-            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timeslice);
+        move(timeslice: number): void {
+            let offset = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(timeslice);
             this.position.add(offset);
 
-            // Wenn die Biene den Canvasrand erreicht, wird sie auf die andere Seite gesetzt
-            if (this.position.x < 0)
-                this.position.x += crc2.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += crc2.canvas.height;
-            if (this.position.x > crc2.canvas.width)
-                this.position.x -= crc2.canvas.width;
-            if (this.position.y > crc2.canvas.height)
-                this.position.y -= crc2.canvas.height;
+            if (this.position.x < 0) this.position.x += crc2.canvas.width;
+            if (this.position.y < 0) this.position.y += crc2.canvas.height;
+            if (this.position.x > crc2.canvas.width) this.position.x -= crc2.canvas.width;
+            if (this.position.y > crc2.canvas.height) this.position.y -= crc2.canvas.height;
         }
 
-        draw() {
+        draw(): void {
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
 
@@ -63,6 +52,5 @@ namespace A09_Ententeich {
             crc2.fill();
 
             crc2.restore();
-        };
-    }
-}
+        }
+    }}

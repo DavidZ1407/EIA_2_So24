@@ -1,30 +1,23 @@
 "use strict";
 var A09_Ententeich;
 (function (A09_Ententeich) {
-    class insect {
-        position;
-        velocity;
+    class Insect extends A09_Ententeich.Movable {
         size;
-        color;
-        type;
-        activity;
-        constructor(_size, _position) {
-            if (_position)
-                this.position = _position;
-            else
-                this.position = new A09_Ententeich.Vector(Math.random() * A09_Ententeich.crc2.canvas.width, Math.random() * A09_Ententeich.crc2.canvas.height);
-            this.velocity = new A09_Ententeich.Vector(50, 0);
-            this.velocity.randomize(120, 20);
-            // Farbe, Typ und Aktivität der Biene festlegen
-            this.color = "yellow";
-            this.type = "bumblebee";
-            this.activity = "flying";
+        constructor(size, position) {
+            let canvasWidth = A09_Ententeich.crc2.canvas.width;
+            let canvasHeight = A09_Ententeich.crc2.canvas.height;
+            let defaultPosition = position || new A09_Ententeich.Vector(Math.random() * canvasWidth, Math.random() * canvasHeight);
+            defaultPosition.x = Math.min(canvasWidth, Math.max(0, defaultPosition.x));
+            defaultPosition.y = Math.min(canvasHeight, Math.max(0, defaultPosition.y));
+            let defaultVelocity = new A09_Ententeich.Vector(50, 0);
+            defaultVelocity.randomize(120, 20);
+            super(defaultPosition, defaultVelocity, "yellow", "insect");
+            this.size = size;
         }
-        move(_timeslice) {
+        move(timeslice) {
             let offset = new A09_Ententeich.Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timeslice);
+            offset.scale(timeslice);
             this.position.add(offset);
-            // Wenn die Biene den Canvasrand erreicht, wird sie auf die andere Seite gesetzt
             if (this.position.x < 0)
                 this.position.x += A09_Ententeich.crc2.canvas.width;
             if (this.position.y < 0)
@@ -55,8 +48,7 @@ var A09_Ententeich;
             A09_Ententeich.crc2.fill();
             A09_Ententeich.crc2.restore();
         }
-        ;
     }
-    A09_Ententeich.insect = insect;
+    A09_Ententeich.Insect = Insect;
 })(A09_Ententeich || (A09_Ententeich = {}));
 //# sourceMappingURL=insect.js.map
